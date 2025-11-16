@@ -18,19 +18,26 @@ class RegisterPage extends StatelessWidget {
       appBar: BasicAppBar(
         title: SvgPicture.asset(AppVectors.logo, height: 40, width: 40),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          _registerText(),
-          SizedBox(height: 50),
-          _fullNameField(context),
-          const SizedBox(height: 20),
-          _emailField(context),
-          const SizedBox(height: 20),
-          _passwordField(context),
-          const SizedBox(height: 20),
-          BasicAppButton(onPressed: () {}, title: 'Create Account'),
-        ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric( vertical: 50,
+              horizontal: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: 50),
+              _registerText(),
+              SizedBox(height: 50),
+              _fullNameField(context),
+              const SizedBox(height: 20),
+              _emailField(context),
+              const SizedBox(height: 20),
+              _passwordField(context),
+              const SizedBox(height: 20),
+              BasicAppButton(onPressed: () {}, title: 'Create Account'),
+            ],
+          ),
+        ),
       ),
     );
   }
