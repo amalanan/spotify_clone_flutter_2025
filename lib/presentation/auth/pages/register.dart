@@ -3,7 +3,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:spotify_clone_november_2025/common/widgets/appbar/app_bar.dart';
 import 'package:spotify_clone_november_2025/common/widgets/button/basic_app_button.dart';
 import 'package:spotify_clone_november_2025/core/configs/assets/app_vectors.dart';
+import 'package:spotify_clone_november_2025/data/models/auth/create_user_req.dart';
+import 'package:spotify_clone_november_2025/domain/usecases/auth/signup.dart';
 import 'package:spotify_clone_november_2025/presentation/auth/pages/signin.dart';
+import 'package:spotify_clone_november_2025/presentation/root/pages/root.dart';
+import 'package:spotify_clone_november_2025/service_locator.dart';
 
 class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
@@ -20,8 +24,7 @@ class RegisterPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric( vertical: 50,
-              horizontal: 30),
+          padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -34,7 +37,35 @@ class RegisterPage extends StatelessWidget {
               const SizedBox(height: 20),
               _passwordField(context),
               const SizedBox(height: 20),
-              BasicAppButton(onPressed: () {}, title: 'Create Account'),
+              BasicAppButton(
+                onPressed: () async {
+                  var result = await s1<SignUpUseCase>().call(
+                    params: CreateUserReq(
+                      fullName: _fullNameController.text.toString(),
+                      email: _emailController.text.toString(),
+                      password: _passwordController.text.toString(),
+                    ),
+                  );
+                  result.fold(
+                    (l) {
+                      var snackbar = SnackBar(content: Text(l));
+                      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                    },
+                    (r) {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return RootPage();
+                          },
+                        ),
+                        (route) => false,
+                      );
+                    },
+                  );
+                },
+                title: 'Create Account',
+              ),
             ],
           ),
         ),

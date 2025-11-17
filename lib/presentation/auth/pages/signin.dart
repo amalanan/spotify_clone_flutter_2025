@@ -20,8 +20,7 @@ class SignInPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric( vertical: 50,
-              horizontal: 30),
+          padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -47,7 +46,6 @@ class SignInPage extends StatelessWidget {
       textAlign: TextAlign.center,
     );
   }
-
 
   Widget _emailField(BuildContext context) {
     return TextField(
@@ -93,4 +91,3 @@ class SignInPage extends StatelessWidget {
     );
   }
 }
-
