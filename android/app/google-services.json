@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "990362783170",
-    "project_id": "spotify0125",
-    "storage_bucket": "spotify0125.firebasestorage.app"
+    "project_number": "640630116622",
+    "project_id": "livetest1-8f9af",
+    "storage_bucket": "livetest1-8f9af.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:990362783170:android:feaa4a75f9d0dcde929a5b",
+        "mobilesdk_app_id": "1:640630116622:android:a02415609f674490de875f",
         "android_client_info": {
           "package_name": "com.example.spotify_clone_november_2025"
         }
@@ -15,7 +15,26 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAvyo_AFXaaqox47zqyFEHqSTyNnrboqRc"
+          "current_key": "AIzaSyCghNwd6pBopjl0UftJvRVM4GNE87Ps6EM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640630116622:android:73fc503071f54750de875f",
+        "android_client_info": {
+          "package_name": "com.mycompany.livetest1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCghNwd6pBopjl0UftJvRVM4GNE87Ps6EM"
         }
       ],
       "services": {

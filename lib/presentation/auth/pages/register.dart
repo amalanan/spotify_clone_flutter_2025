@@ -6,7 +6,7 @@ import 'package:spotify_clone_november_2025/core/configs/assets/app_vectors.dart
 import 'package:spotify_clone_november_2025/data/models/auth/create_user_req.dart';
 import 'package:spotify_clone_november_2025/domain/usecases/auth/signup.dart';
 import 'package:spotify_clone_november_2025/presentation/auth/pages/signin.dart';
-import 'package:spotify_clone_november_2025/presentation/root/pages/root.dart';
+import 'package:spotify_clone_november_2025/presentation/home/pages/home.dart';
 import 'package:spotify_clone_november_2025/service_locator.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -56,7 +56,7 @@ class RegisterPage extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (BuildContext context) {
-                            return RootPage();
+                            return HomePage();
                           },
                         ),
                         (route) => false,

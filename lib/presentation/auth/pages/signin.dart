@@ -3,12 +3,15 @@ import 'package:flutter_svg/svg.dart';
 import 'package:spotify_clone_november_2025/common/widgets/appbar/app_bar.dart';
 import 'package:spotify_clone_november_2025/common/widgets/button/basic_app_button.dart';
 import 'package:spotify_clone_november_2025/core/configs/assets/app_vectors.dart';
+import 'package:spotify_clone_november_2025/data/models/auth/signin_user_req.dart';
+import 'package:spotify_clone_november_2025/domain/usecases/auth/signin.dart';
 import 'package:spotify_clone_november_2025/presentation/auth/pages/register.dart';
+import 'package:spotify_clone_november_2025/presentation/home/pages/home.dart';
+import 'package:spotify_clone_november_2025/service_locator.dart';
 
 class SignInPage extends StatelessWidget {
   SignInPage({super.key});
 
-  final TextEditingController _fullNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -31,7 +34,35 @@ class SignInPage extends StatelessWidget {
               const SizedBox(height: 20),
               _passwordField(context),
               const SizedBox(height: 20),
-              BasicAppButton(onPressed: () {}, title: 'Sign In'),
+              BasicAppButton(
+                onPressed: () async {
+                  var result = await s1<SignInUseCase>().call(
+                    params: SignInUserReq(
+                      email: _emailController.text.toString(),
+                      password: _passwordController.text.toString(),
+                    ),
+                  );
+                  result.fold(
+                    (l) {
+                      var snackbar = SnackBar(content: Text(l, style: TextStyle(color: Colors.black)));
+                      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                      print(l.toString());
+                    },
+                    (r) {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return HomePage();
+                          },
+                        ),
+                        (route) => false,
+                      );
+                    },
+                  );
+                },
+                title: 'Sign In',
+              ),
             ],
           ),
         ),
