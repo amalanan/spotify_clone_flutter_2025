@@ -1,11 +1,10 @@
-import 'package:dartz/dartz.dart';
 import 'package:spotify_clone_november_2025/core/usecase/usecase.dart';
 import 'package:spotify_clone_november_2025/domain/repository/song/song.dart';
 import 'package:spotify_clone_november_2025/service_locator.dart';
 
-class GetNewsSongsUseCase implements UseCase<Either, dynamic> {
+class IsFavoriteSongUseCase implements UseCase<bool, String> {
   @override
-  Future<Either> call({params}) async {
-    return await sl<SongsRepository>().getNewsSongs();
+  Future<bool> call({String? params}) async {
+    return await sl<SongsRepository>().isFavoriteSong(params!);
   }
 }

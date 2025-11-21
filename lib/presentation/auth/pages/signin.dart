@@ -36,7 +36,7 @@ class SignInPage extends StatelessWidget {
               const SizedBox(height: 20),
               BasicAppButton(
                 onPressed: () async {
-                  var result = await s1<SignInUseCase>().call(
+                  var result = await sl<SignInUseCase>().call(
                     params: SignInUserReq(
                       email: _emailController.text.toString(),
                       password: _passwordController.text.toString(),

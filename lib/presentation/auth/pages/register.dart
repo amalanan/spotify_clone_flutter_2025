@@ -39,7 +39,7 @@ class RegisterPage extends StatelessWidget {
               const SizedBox(height: 20),
               BasicAppButton(
                 onPressed: () async {
-                  var result = await s1<SignUpUseCase>().call(
+                  var result = await sl<SignUpUseCase>().call(
                     params: CreateUserReq(
                       fullName: _fullNameController.text.toString(),
                       email: _emailController.text.toString(),
