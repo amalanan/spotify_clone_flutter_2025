@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage>
       ),
       body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      //    crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _homeTopCard(),

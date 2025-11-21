@@ -6,7 +6,7 @@ import 'package:spotify_clone_november_2025/presentation/home/bloc/news_songs_cu
 import 'package:spotify_clone_november_2025/presentation/home/bloc/news_songs_state.dart';
 
 class NewsSongs extends StatelessWidget {
-  const NewsSongs({super.key});
+  NewsSongs({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +20,12 @@ class NewsSongs extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             }
             if (state is NewsSongsLoaded) {
+              print("Number of songs: ${state.songs.length}");
+              for (var song in state.songs) {
+                print(
+                  "Title: ${song.title}, Artist: ${song.artist}, ID: ${song.songId}",
+                );
+              }
               return _songs(state.songs);
             }
             return Container();

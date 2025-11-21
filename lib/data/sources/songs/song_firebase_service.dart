@@ -21,19 +21,21 @@ class SongFirebaseServiceImpl extends SongFirebaseService {
       List<SongEntity> songs = [];
       var data =
           await FirebaseFirestore.instance
-              .collection('Songs')
-              .orderBy('releaseDate', descending: true)
-              .limit(3)
+              .collection('songs')
+              .orderBy('releaseDate', descending: true).limit(6)
               .get();
-
+      print('Number of docs vvvvv: ${data.docs.length}');
+      for (var doc in data.docs) {
+        print(doc.data());
+      }
       for (var element in data.docs) {
         var songModel = SongModel.fromJson(element.data());
-        bool isFavorite = await sl<IsFavoriteSongUseCase>().call(
+        /* bool isFavorite = await sl<IsFavoriteSongUseCase>().call(
             params: element.reference.id
         );
         songModel.isFavorite = isFavorite;
         songModel.songId = element.reference.id;
-        songs.add(songModel.toEntity());
+       */ songs.add(songModel.toEntity());
       }
       return Right(songs);
     } catch (e) {

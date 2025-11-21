@@ -19,23 +19,24 @@ class SongModel {
   });
 
   SongModel.fromJson(Map<String,dynamic> data) {
-    title = data['title'];
-    artist = data['artist'];
-    duration = data['duration'];
-    releaseDate = data['releaseDate'];
-  }
-}
+    title = data['title'] ?? 'Unknown Title';
+    artist = data['artist'] ?? 'Unknown Artist';
+    duration = data['duration'] ?? 0.0;
+    releaseDate = data['releaseDate'] ?? Timestamp.now();
+    isFavorite = false; // قيمة افتراضية
+    songId = ''; // قيمة افتراضية
+  }}
+
 
 extension SongModelX on SongModel {
-
   SongEntity toEntity() {
     return SongEntity(
-        title: title!,
-        artist: artist!,
-        duration: duration!,
-        releaseDate: releaseDate!,
-        isFavorite: isFavorite!,
-        songId: songId!
+      title: title ?? 'Unknown Title',
+      artist: artist ?? 'Unknown Artist',
+      duration: duration ?? 0.0,
+      releaseDate: releaseDate ?? Timestamp.now(),
+      isFavorite: isFavorite ?? false,
+      songId: songId ?? '',
     );
   }
 }
