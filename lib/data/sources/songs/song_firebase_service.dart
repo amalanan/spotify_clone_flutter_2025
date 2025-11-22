@@ -24,7 +24,7 @@ class SongFirebaseServiceImpl extends SongFirebaseService {
               .collection('songs')
               .orderBy('releaseDate', descending: true).limit(6)
               .get();
-      print('Number of docs vvvvv: ${data.docs.length}');
+      print('Number of docs : ${data.docs.length}');
       for (var doc in data.docs) {
         print(doc.data());
       }
