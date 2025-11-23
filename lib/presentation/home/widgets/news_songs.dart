@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spotify_clone_november_2025/common/helpers/is_dark_mode.dart';
 import 'package:spotify_clone_november_2025/core/configs/constants/app_urls.dart';
+import 'package:spotify_clone_november_2025/core/configs/theme/app_colors.dart';
 import 'package:spotify_clone_november_2025/domain/entities/song/song.dart';
 import 'package:spotify_clone_november_2025/presentation/home/bloc/news_songs_cubit.dart';
 import 'package:spotify_clone_november_2025/presentation/home/bloc/news_songs_state.dart';
@@ -58,7 +60,39 @@ class NewsSongs extends StatelessWidget {
                         ),
                       ),
                     ),
+                    child: Align(
+                      alignment: Alignment.bottomRight,
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        transform: Matrix4.translationValues(10, 10, 0),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color:
+                              context.isDarkMode
+                                  ? AppColors.darkGrey
+                                  : Color(0xffE6E6E6),
+                        ),
+                        child: Icon(
+                          Icons.play_arrow_rounded,
+                          color:
+                              context.isDarkMode
+                                  ? Color(0xff959595)
+                                  : Color(0xff555555),
+                        ),
+                      ),
+                    ),
                   ),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  songs[index].title,
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                ),
+                SizedBox(height: 5),
+                Text(
+                  songs[index].artist,
+                  style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12),
                 ),
               ],
             ),
