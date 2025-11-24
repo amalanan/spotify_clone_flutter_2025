@@ -6,6 +6,7 @@ import 'package:spotify_clone_november_2025/core/configs/theme/app_colors.dart';
 import 'package:spotify_clone_november_2025/domain/entities/song/song.dart';
 import 'package:spotify_clone_november_2025/presentation/home/bloc/news_songs_cubit.dart';
 import 'package:spotify_clone_november_2025/presentation/home/bloc/news_songs_state.dart';
+import 'package:spotify_clone_november_2025/presentation/song_player/pages/song_player.dart';
 
 class NewsSongs extends StatelessWidget {
   NewsSongs({super.key});
@@ -43,7 +44,16 @@ class NewsSongs extends StatelessWidget {
       shrinkWrap: true,
       itemBuilder: (context, index) {
         return GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) {
+                  return SongPlayerPage(songEntity: songs[index]);
+                },
+              ),
+            );
+          },
           child: SizedBox(
             width: 160,
             child: Column(
