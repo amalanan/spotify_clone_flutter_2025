@@ -1,9 +1,12 @@
 class UserEntity {
-  String? userId;
-  String? fullName;
-  String? email;
 
- // User? user = FirebaseAuth.instance.currentUser;
+  String ? fullName;
+  String ? email;
+  String ? imageURL;
 
-  UserEntity({this.userId, this.fullName, this.email});
+  UserEntity({
+    this.fullName,
+    this.email,
+    this.imageURL
+  });
 }

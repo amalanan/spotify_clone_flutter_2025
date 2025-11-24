@@ -2,48 +2,49 @@ import 'package:flutter/material.dart';
 import 'package:spotify_clone_november_2025/common/helpers/is_dark_mode.dart';
 
 class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
-  BasicAppBar({super.key, this.title, this.hideBack = false, this.action});
-
-  final Widget? title;
+  final Widget ? title;
+  final Widget ? action;
+  final Color ? backgroundColor;
   final bool hideBack;
-  final Widget? action;
+  const BasicAppBar({
+    this.title,
+    this.hideBack = false,
+    this.action,
+    this.backgroundColor ,
+    super.key
+  });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.transparent,
+      backgroundColor: backgroundColor ?? Colors.transparent,
       elevation: 0,
       centerTitle: true,
-      title: title ?? Text(''),
-      actions: [action ?? Container()],
-      leading:
-          hideBack
-              ? null
-              : IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                    color:
-                        context.isDarkMode
-                            ? Colors.white.withOpacity(0.03)
-                            : Colors.black.withOpacity(0.04),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Icon(
-                    Icons.arrow_back_ios_new,
-                    size: 15,
-                    color: context.isDarkMode ? Colors.white : Colors.black,
-                  ),
-                ),
-              ),
+      title: title ?? const Text(''),
+      actions: [
+        action ?? Container()
+      ],
+      leading: hideBack ? null : IconButton(
+        onPressed: (){
+          Navigator.pop(context);
+        },
+        icon: Container(
+          height: 50,
+          width: 50,
+          decoration: BoxDecoration(
+              color: context.isDarkMode ? Colors.white.withOpacity(0.03) : Colors.black.withOpacity(0.04),
+              shape: BoxShape.circle
+          ),
+          child: Icon(
+            Icons.arrow_back_ios_new,
+            size: 15,
+            color: context.isDarkMode ? Colors.white : Colors.black,
+          ),
+        ),
+      ),
     );
   }
 
   @override
-  // TODO: implement preferredSize
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
